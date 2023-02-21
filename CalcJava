@@ -1,0 +1,53 @@
+import java.io.IOException;
+import java.util.Scanner;
+//добавление библиотек
+public class Calculator {
+    //создание класса
+    public static void main(String[] args) {
+        //создание первого метода
+        System.out.println("Калькулятор готов к работе!\n введите число: ");
+        //вывод в консоль(терминал)
+        Scanner sc = new Scanner(System.in);
+        //создание сканера
+        int a;
+        int b;
+        String op = "";
+        //создание цикла do while
+        do {
+            String input = sc.next();
+            if (input.equals("выход")) {
+                break;
+            }
+            String[] strings = input.split("\\W");
+            String[] operator = input.split("\\w");
+            //создание исключений  с помощью блока try catch
+            try {
+                a = Integer.parseInt(strings[0]);
+                b = Integer.parseInt(strings[1]);
+                op = operator[operator.length - 1];
+                System.out.println("Сумма = " + operation(a, b, op));
+
+            } catch (Exception e) {
+                System.out.println("Ошибка введите еще раз");
+
+
+            }
+        } while (true);
+    }
+
+    private static int operation(int a, int b, String op) {
+        switch (op) {
+            case "*":
+                return a * b;
+            case "+":
+                return a + b;
+            case "-":
+                return a - b;
+            case "/":
+                return a / b;
+            default:
+                return 0;
+        }
+    }
+}
+// использовать блок try catch для создания исключений перед блоком проверяемого кода...
